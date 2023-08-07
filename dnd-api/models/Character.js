@@ -6,7 +6,7 @@ const Trait = require('./Trait')
 const Spell = require('./Spell')
 const Item = require('./Item')
 
-Character.belongsTo(User)
+Character.belongsTo(User, {foreignKey: 'userID'})
 Character.belongsTo(Campaign)
 Character.hasMany(Trait)
 Character.hasMany(Item)

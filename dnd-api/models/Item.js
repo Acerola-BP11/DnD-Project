@@ -3,7 +3,13 @@ const sequelize = require('../sequelize')
 const User = require('./User')
 const Character = require('./Character')
 
-Item.belongsTo(User)
+Item.belongsTo(User, {
+    foreignKey: {
+        name: 'userID',
+        allowNull: false
+    }
+})
+
 Item.belongsToMany(Character)
 
 const Item = sequelize.define('Item', {

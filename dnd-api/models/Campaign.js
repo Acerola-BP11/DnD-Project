@@ -2,9 +2,13 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('../sequelize')
 const User = require('./User')
 const Character = require('./Character')
-const { data } = require('cheerio/lib/api/attributes')
 
-Campaign.belongsToMany(User, { through: 'CampaignUser' })
+Campaign.belongsTo(User, {
+    foreignKey: {
+        name: 'owner',
+        allowNull: false
+    }
+})
 Campaign.hasMany(Character)
 
 const Campaign = sequelize.define('Campaign', {
@@ -15,10 +19,6 @@ const Campaign = sequelize.define('Campaign', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    owner: {
-        type: DataTypes.INTEGER,
         allowNull: false
     }
 

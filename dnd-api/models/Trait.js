@@ -16,9 +16,12 @@ const Trait = sequelize.define('Trait', {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    description: {
+    source: {
         type: DataTypes.TEXT,
-        allowNull: true
+        defaultValue: 'Homebrew'
+    },
+    description: {
+        type: DataTypes.TEXT
     }
 })
 
